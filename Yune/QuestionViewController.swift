@@ -32,6 +32,7 @@ class QuestionViewController: UIViewController {
         super.viewDidLoad()
 
         tableView.dataSource = self
+        tableView.delegate = self
         textField.delegate = self
     }
 
@@ -42,11 +43,17 @@ class QuestionViewController: UIViewController {
     
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "recordVideo" {
-            _ = segue.destinationViewController as! RecordViewController
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "recordVideo":
+                _ = segue.destinationViewController as! RecordViewController
+            case "viewAnswers":
+                _ = segue.destinationViewController as! AnswersViewController
+            default:
+                break
+            }
         }
     }
-
 }
 
 extension QuestionViewController: UITableViewDataSource {
@@ -66,6 +73,13 @@ extension QuestionViewController: UITableViewDataSource {
         longPressGestureRecognizer.minimumPressDuration = 0.5
         cell.addGestureRecognizer(longPressGestureRecognizer)
         return cell
+    }
+}
+
+extension QuestionViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("selected row")
+        self.performSegueWithIdentifier("viewAnswers", sender: self)
     }
 }
 

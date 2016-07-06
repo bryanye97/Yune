@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import MediaPlayer
 import MobileCoreServices
+import Parse
 
 class RecordViewController: UIViewController {
 
@@ -49,7 +51,7 @@ class RecordViewController: UIViewController {
 
 }
 
-extension RecordViewController: UIImagePickerControllerDelegate {
+extension RecordViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func startCameraFromViewController(viewController: UIViewController, withDelegate delegate: protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) -> Bool {
         if UIImagePickerController.isSourceTypeAvailable(.Camera) == false {
@@ -68,15 +70,28 @@ extension RecordViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
-        dismissViewControllerAnimated(true, completion: nil)
-        if mediaType == kUTTypeMovie {
-            guard let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path else { return }
-            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path) {
-                UISaveVideoAtPathToSavedPhotosAlbum(path, self, #selector(RecordViewController.video(_:didFinishSavingWithError:contextInfo:)), nil)
+        dismissViewControllerAnimated(true) { 
+            if mediaType == kUTTypeMovie {
+            
+            let parseVideo = PFObject(className: "Video")
+            let data = NSData(contentsOfURL: info[UIImagePickerControllerMediaURL] as! NSURL)
+            parseVideo["videoFile"] = PFFile(data: data!)
+            parseVideo.saveInBackground()
+                
+        }
+//        
+//        if mediaType == kUTTypeMovie {
+//            guard let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path else { return }
+//            print(path)
+            
+            
+//            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path) {
+//                UISaveVideoAtPathToSavedPhotosAlbum(path, self, #selector(RecordViewController.video(_:didFinishSavingWithError:contextInfo:)), nil)
+//            }
+        
             }
+
         }
     }
-}
 
-extension RecordViewController: UINavigationControllerDelegate {
-}
+

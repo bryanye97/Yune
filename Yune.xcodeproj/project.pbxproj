@@ -16,6 +16,8 @@
 		A2B5B9531D2D811B00E97FBE /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B9521D2D811B00E97FBE /* ParseHelper.swift */; };
 		A2B5B9551D2D81A600E97FBE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B9541D2D81A600E97FBE /* Post.swift */; };
 		A2B5B9571D2D86DA00E97FBE /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B9561D2D86DA00E97FBE /* RecordViewController.swift */; };
+		A2B5B95A1D2DA7FC00E97FBE /* VideoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B9591D2DA7FC00E97FBE /* VideoTakingHelper.swift */; };
+		A2B5B95C1D2DBCB600E97FBE /* AnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B95B1D2DBCB600E97FBE /* AnswersViewController.swift */; };
 		EA2C6845F82152DA92B9087A /* Pods_Yune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C90F7E6559C75748F2E0C2A /* Pods_Yune.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,8 @@
 		A2B5B9521D2D811B00E97FBE /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		A2B5B9541D2D81A600E97FBE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A2B5B9561D2D86DA00E97FBE /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		A2B5B9591D2DA7FC00E97FBE /* VideoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTakingHelper.swift; sourceTree = "<group>"; };
+		A2B5B95B1D2DBCB600E97FBE /* AnswersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 				A21E5DE41D2D7ECF00FE7E77 /* Main.storyboard */,
 				A2B5B9581D2D870200E97FBE /* ViewControllers */,
 				A2B5B9541D2D81A600E97FBE /* Post.swift */,
+				A2B5B9591D2DA7FC00E97FBE /* VideoTakingHelper.swift */,
 				A2B5B9501D2D805A00E97FBE /* QuestionTableViewCell.swift */,
 				A2B5B9521D2D811B00E97FBE /* ParseHelper.swift */,
 				A21E5DE71D2D7ECF00FE7E77 /* Assets.xcassets */,
@@ -104,6 +109,7 @@
 			children = (
 				A21E5DF21D2D7F7000FE7E77 /* QuestionViewController.swift */,
 				A2B5B9561D2D86DA00E97FBE /* RecordViewController.swift */,
+				A2B5B95B1D2DBCB600E97FBE /* AnswersViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -231,9 +237,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2B5B95C1D2DBCB600E97FBE /* AnswersViewController.swift in Sources */,
 				A2B5B9511D2D805A00E97FBE /* QuestionTableViewCell.swift in Sources */,
 				A21E5DF31D2D7F7000FE7E77 /* QuestionViewController.swift in Sources */,
 				A21E5DE11D2D7ECF00FE7E77 /* AppDelegate.swift in Sources */,
+				A2B5B95A1D2DA7FC00E97FBE /* VideoTakingHelper.swift in Sources */,
 				A2B5B9571D2D86DA00E97FBE /* RecordViewController.swift in Sources */,
 				A2B5B9531D2D811B00E97FBE /* ParseHelper.swift in Sources */,
 				A2B5B9551D2D81A600E97FBE /* Post.swift in Sources */,
