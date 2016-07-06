@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import Parse
+
+class ParseHelper {
+
+static func kolodaRequestForCurrentUser(completionBlock: PFQueryArrayResultBlock) {
+    let query = PFQuery(className: "Post")
+    query.includeKey("user")
+    query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+}
