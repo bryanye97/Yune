@@ -16,8 +16,13 @@
 		A2B5B9531D2D811B00E97FBE /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B9521D2D811B00E97FBE /* ParseHelper.swift */; };
 		A2B5B9551D2D81A600E97FBE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B9541D2D81A600E97FBE /* Post.swift */; };
 		A2B5B9571D2D86DA00E97FBE /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B9561D2D86DA00E97FBE /* RecordViewController.swift */; };
-		A2B5B95A1D2DA7FC00E97FBE /* VideoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B9591D2DA7FC00E97FBE /* VideoTakingHelper.swift */; };
 		A2B5B95C1D2DBCB600E97FBE /* AnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B95B1D2DBCB600E97FBE /* AnswersViewController.swift */; };
+		A2DE64A51D2EF8EC0075C141 /* AdobeCreativeSDKCoreResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A2DE64A41D2EF8EC0075C141 /* AdobeCreativeSDKCoreResources.bundle */; };
+		A2DE64A71D2EF9180075C141 /* AdobeCreativeSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DE64A61D2EF9180075C141 /* AdobeCreativeSDKCore.framework */; };
+		A2DE64A91D2EF9300075C141 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DE64A81D2EF9300075C141 /* libc++.tbd */; };
+		A2DE64AB1D2EF9380075C141 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DE64AA1D2EF9380075C141 /* libz.tbd */; };
+		A2DE64AD1D2EF9450075C141 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DE64AC1D2EF9450075C141 /* MobileCoreServices.framework */; };
+		A2DE64AF1D2EF94D0075C141 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DE64AE1D2EF94D0075C141 /* SystemConfiguration.framework */; };
 		EA2C6845F82152DA92B9087A /* Pods_Yune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C90F7E6559C75748F2E0C2A /* Pods_Yune.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,8 +41,14 @@
 		A2B5B9521D2D811B00E97FBE /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		A2B5B9541D2D81A600E97FBE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A2B5B9561D2D86DA00E97FBE /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
-		A2B5B9591D2DA7FC00E97FBE /* VideoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTakingHelper.swift; sourceTree = "<group>"; };
 		A2B5B95B1D2DBCB600E97FBE /* AnswersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswersViewController.swift; sourceTree = "<group>"; };
+		A2DE64A41D2EF8EC0075C141 /* AdobeCreativeSDKCoreResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AdobeCreativeSDKCoreResources.bundle; path = AdobeCreativeSDKFrameworks/AdobeCreativeSDKCore.framework/Versions/A/Resources/AdobeCreativeSDKCoreResources.bundle; sourceTree = "<group>"; };
+		A2DE64A61D2EF9180075C141 /* AdobeCreativeSDKCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdobeCreativeSDKCore.framework; path = AdobeCreativeSDKFrameworks/AdobeCreativeSDKCore.framework; sourceTree = "<group>"; };
+		A2DE64A81D2EF9300075C141 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		A2DE64AA1D2EF9380075C141 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A2DE64AC1D2EF9450075C141 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A2DE64AE1D2EF94D0075C141 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A2DE64B01D2EF9B20075C141 /* Yune-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yune-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +56,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2DE64AF1D2EF94D0075C141 /* SystemConfiguration.framework in Frameworks */,
+				A2DE64AD1D2EF9450075C141 /* MobileCoreServices.framework in Frameworks */,
+				A2DE64AB1D2EF9380075C141 /* libz.tbd in Frameworks */,
+				A2DE64A91D2EF9300075C141 /* libc++.tbd in Frameworks */,
+				A2DE64A71D2EF9180075C141 /* AdobeCreativeSDKCore.framework in Frameworks */,
 				EA2C6845F82152DA92B9087A /* Pods_Yune.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +71,11 @@
 		1C208C4E0AA5F8DB3FF338B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A2DE64AE1D2EF94D0075C141 /* SystemConfiguration.framework */,
+				A2DE64AC1D2EF9450075C141 /* MobileCoreServices.framework */,
+				A2DE64AA1D2EF9380075C141 /* libz.tbd */,
+				A2DE64A81D2EF9300075C141 /* libc++.tbd */,
+				A2DE64A61D2EF9180075C141 /* AdobeCreativeSDKCore.framework */,
 				1C90F7E6559C75748F2E0C2A /* Pods_Yune.framework */,
 			);
 			name = Frameworks;
@@ -72,6 +93,7 @@
 		A21E5DD41D2D7ECF00FE7E77 = {
 			isa = PBXGroup;
 			children = (
+				A2DE64A41D2EF8EC0075C141 /* AdobeCreativeSDKCoreResources.bundle */,
 				A21E5DDF1D2D7ECF00FE7E77 /* Yune */,
 				A21E5DDE1D2D7ECF00FE7E77 /* Products */,
 				5704C7C7B7C2821A0CD91F81 /* Pods */,
@@ -90,11 +112,11 @@
 		A21E5DDF1D2D7ECF00FE7E77 /* Yune */ = {
 			isa = PBXGroup;
 			children = (
+				A2DE64B01D2EF9B20075C141 /* Yune-Bridging-Header.h */,
 				A21E5DE01D2D7ECF00FE7E77 /* AppDelegate.swift */,
 				A21E5DE41D2D7ECF00FE7E77 /* Main.storyboard */,
 				A2B5B9581D2D870200E97FBE /* ViewControllers */,
 				A2B5B9541D2D81A600E97FBE /* Post.swift */,
-				A2B5B9591D2DA7FC00E97FBE /* VideoTakingHelper.swift */,
 				A2B5B9501D2D805A00E97FBE /* QuestionTableViewCell.swift */,
 				A2B5B9521D2D811B00E97FBE /* ParseHelper.swift */,
 				A21E5DE71D2D7ECF00FE7E77 /* Assets.xcassets */,
@@ -176,6 +198,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2DE64A51D2EF8EC0075C141 /* AdobeCreativeSDKCoreResources.bundle in Resources */,
 				A21E5DEB1D2D7ECF00FE7E77 /* LaunchScreen.storyboard in Resources */,
 				A21E5DE81D2D7ECF00FE7E77 /* Assets.xcassets in Resources */,
 				A21E5DE61D2D7ECF00FE7E77 /* Main.storyboard in Resources */,
@@ -241,7 +264,6 @@
 				A2B5B9511D2D805A00E97FBE /* QuestionTableViewCell.swift in Sources */,
 				A21E5DF31D2D7F7000FE7E77 /* QuestionViewController.swift in Sources */,
 				A21E5DE11D2D7ECF00FE7E77 /* AppDelegate.swift in Sources */,
-				A2B5B95A1D2DA7FC00E97FBE /* VideoTakingHelper.swift in Sources */,
 				A2B5B9571D2D86DA00E97FBE /* RecordViewController.swift in Sources */,
 				A2B5B9531D2D811B00E97FBE /* ParseHelper.swift in Sources */,
 				A2B5B9551D2D81A600E97FBE /* Post.swift in Sources */,
@@ -359,10 +381,40 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AdobeCreativeSDKFrameworks",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					USE_CSDK_COMPONENTS,
+				);
 				INFOPLIST_FILE = Yune/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Bolts\"",
+					"-framework",
+					"\"Bond\"",
+					"-framework",
+					"\"ConvenienceKit\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"Parse\"",
+					"-framework",
+					"\"ParseFacebookUtilsV4\"",
+					"-framework",
+					"\"ParseUI\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryanye.Yune;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Yune/Yune-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -372,10 +424,40 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AdobeCreativeSDKFrameworks",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					USE_CSDK_COMPONENTS,
+				);
 				INFOPLIST_FILE = Yune/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Bolts\"",
+					"-framework",
+					"\"Bond\"",
+					"-framework",
+					"\"ConvenienceKit\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"Parse\"",
+					"-framework",
+					"\"ParseFacebookUtilsV4\"",
+					"-framework",
+					"\"ParseUI\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryanye.Yune;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Yune/Yune-Bridging-Header.h";
 			};
 			name = Release;
 		};

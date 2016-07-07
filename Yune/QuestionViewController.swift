@@ -30,7 +30,8 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        AdobeUXAuthManager.sharedManager().setAuthenticationParametersWithClientID("252eb1807af746fda7a9370b760340e8", withClientSecret: "c30fd81e-6e33-4c57-b1bd-bd8d94710366")
         tableView.dataSource = self
         tableView.delegate = self
         textField.delegate = self
