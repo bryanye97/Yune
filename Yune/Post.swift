@@ -16,6 +16,7 @@ class Post: PFObject, PFSubclassing {
     
     @NSManaged var title: String?
     @NSManaged var user: PFUser?
+    var photos: Observable<[Photo]?> = Observable(nil)
     
     static func parseClassName() -> String {
         return "Post"
@@ -46,6 +47,4 @@ class Post: PFObject, PFSubclassing {
             }
         }
     }
-    
-
 }

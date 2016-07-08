@@ -10,21 +10,23 @@ import UIKit
 import Parse
 
 class QuestionViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var textField: UITextField!
     
+    var answerPost: Post?
+    
     var photoTakingHelper: PhotoTakingHelper?
     
-    private var dataSource = [Post]()
+    private var postSource = [Post]()
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         ParseHelper.timelineRequestForCurrentUser {(result: [PFObject]?, error: NSError?) -> Void in
             
-            self.dataSource = result as? [Post] ?? []
+            self.postSource = result as? [Post] ?? []
             
             self.tableView.reloadData()
         }
@@ -38,7 +40,7 @@ class QuestionViewController: UIViewController {
         tableView.delegate = self
         textField.delegate = self
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,47 +49,49 @@ class QuestionViewController: UIViewController {
     func takePhoto(indexPath: NSIndexPath) {
         photoTakingHelper = PhotoTakingHelper(viewController: self, callback: { (image: UIImage?) in
             let photo = Photo()
-            photo.image.value = image
-            photo.toPost = self.dataSource[indexPath.row]
+            photo.image = image
+            photo.toPost = self.postSource[indexPath.row]
             photo.uploadPhoto()
         })
     }
     
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let identifier = segue.identifier {
-            switch identifier {
-
-            default:
-                break
-            }
+        if segue.identifier == "showAnswers" {
+            let destinationViewController = segue.destinationViewController as! AnswersViewController
+            destinationViewController.post = answerPost
+            
         }
+    }
+    
+    @IBAction func unwindToQuestions(segue: UIStoryboardSegue) {
     }
 }
 
 extension QuestionViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return postSource.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let post = dataSource[indexPath.row]
+        let post = postSource[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! QuestionTableViewCell
-        cell.backgroundColor = UIColor.greenColor()
         cell.title.text = post.title
         
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress(_:)))
         longPressGestureRecognizer.delegate = self
         longPressGestureRecognizer.minimumPressDuration = 0.5
         cell.addGestureRecognizer(longPressGestureRecognizer)
+        
         return cell
     }
 }
 
 extension QuestionViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("selected row")
+        self.answerPost = self.postSource[indexPath.row]
+        self.performSegueWithIdentifier("showAnswers", sender: self)
     }
 }
 
@@ -96,6 +100,7 @@ extension QuestionViewController: UITextFieldDelegate {
         let post = Post()
         post.title = textField.text
         post.uploadPost()
+        textField.text = ""
         textField.resignFirstResponder()
         return true
     }
@@ -106,11 +111,6 @@ extension QuestionViewController: UIGestureRecognizerDelegate {
         
         if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
             print("gesture worked!")
-            
-            
-            
-            
-            
             
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
             

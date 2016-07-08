@@ -19,10 +19,8 @@ class Photo: PFObject, PFSubclassing {
     
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
-    var image: Observable<UIImage?> = Observable(nil)
-    
-    var likes: Observable<[PFUser]?> = Observable(nil)
-    
+    //  var image: Observable<UIImage?> = Observable(nil)
+    var image: UIImage?
     
     @NSManaged var imageFile: PFFile?
     @NSManaged var user: PFUser?
@@ -49,7 +47,7 @@ class Photo: PFObject, PFSubclassing {
             
             guard let imageData = UIImageJPEGRepresentation(image, 1.0) else {return}
             guard let imageFile = PFFile(name: "image.jpg", data: imageData) else {return}
-
+            
             user = PFUser.currentUser()
             self.imageFile = imageFile
             
@@ -69,18 +67,18 @@ class Photo: PFObject, PFSubclassing {
         }
     }
     
-    func downloadImage() {
-        image.value = Photo.imageCache[self.imageFile!.name]
-        
-        if image.value == nil {
-            imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
-                if let data = data {
-                    let image = UIImage(data: data, scale:1.0)!
-                    self.image.value = image
-                    
-                    Photo.imageCache[self.imageFile!.name] = image
-                }
-            }
-        }
-    }
+    //    func downloadImage() {
+    //        image.value = Photo.imageCache[self.imageFile!.name]
+    //
+    //        if image.value == nil {
+    //            imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
+    //                if let data = data {
+    //                    let image = UIImage(data: data, scale:1.0)!
+    //                    self.image.value = image
+    //
+    //                    Photo.imageCache[self.imageFile!.name] = image
+    //                }
+    //            }
+    //        }
+    //    }
 }
