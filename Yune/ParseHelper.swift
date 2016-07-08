@@ -17,6 +17,7 @@ class ParseHelper {
     
     static let ParsePostClass = "Post"
     static let ParsePostUser = "user"
+    static let ParsePostCreatedAt = "createdAt"
     
     static let ParsePhotoClass = "Photo"
     static let ParsePhotoFromUser = "fromUser"
@@ -25,6 +26,7 @@ class ParseHelper {
     static func timelineRequestForCurrentUser(range: Range<Int>, completionBlock: PFQueryArrayResultBlock) {
         let query = PFQuery(className: ParsePostClass)
         query.includeKey(ParsePostUser)
+        query.orderByDescending(ParsePostCreatedAt)
         
         query.skip = range.startIndex
         query.limit = range.endIndex - range.startIndex
