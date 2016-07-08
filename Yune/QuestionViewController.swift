@@ -15,12 +15,14 @@ class QuestionViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
     
+    var photoTakingHelper: PhotoTakingHelper?
+    
     private var dataSource = [Post]()
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        ParseHelper.kolodaRequestForCurrentUser {(result: [PFObject]?, error: NSError?) -> Void in
+        ParseHelper.timelineRequestForCurrentUser {(result: [PFObject]?, error: NSError?) -> Void in
             
             self.dataSource = result as? [Post] ?? []
             
@@ -42,14 +44,20 @@ class QuestionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func takePhoto(indexPath: NSIndexPath) {
+        photoTakingHelper = PhotoTakingHelper(viewController: self, callback: { (image: UIImage?) in
+            let photo = Photo()
+            photo.image.value = image
+            photo.toPost = self.dataSource[indexPath.row]
+            photo.uploadPhoto()
+        })
+    }
+    
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case "recordVideo":
-                _ = segue.destinationViewController as! RecordViewController
-            case "viewAnswers":
-                _ = segue.destinationViewController as! AnswersViewController
+
             default:
                 break
             }
@@ -80,7 +88,6 @@ extension QuestionViewController: UITableViewDataSource {
 extension QuestionViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("selected row")
-        self.performSegueWithIdentifier("viewAnswers", sender: self)
     }
 }
 
@@ -97,18 +104,24 @@ extension QuestionViewController: UITextFieldDelegate {
 extension QuestionViewController: UIGestureRecognizerDelegate {
     func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         
-        if longPressGestureRecognizer.state == UIGestureRecognizerState.Ended {
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
             print("gesture worked!")
+            
+            
+            
+            
+            
             
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
             alertController.addAction(cancelAction)
             
-            let recordAction = UIAlertAction(title: "Record Answer", style: .Default) { (action) in
-                self.performSegueWithIdentifier("recordVideo", sender: self)
+            let photoAction = UIAlertAction(title: "Answer Question", style: .Default) { (action) in
+                let cell = longPressGestureRecognizer.view as! QuestionTableViewCell
+                self.takePhoto(self.tableView.indexPathForCell(cell)!)
             }
-            alertController.addAction(recordAction)
+            alertController.addAction(photoAction)
             
             self.presentViewController(alertController, animated: true, completion: nil)
         }

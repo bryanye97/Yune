@@ -10,10 +10,18 @@ import Foundation
 import Parse
 
 class ParseHelper {
+    
+    
 
-static func kolodaRequestForCurrentUser(completionBlock: PFQueryArrayResultBlock) {
+static func timelineRequestForCurrentUser(completionBlock: PFQueryArrayResultBlock) {
     let query = PFQuery(className: "Post")
     query.includeKey("user")
     query.findObjectsInBackgroundWithBlock(completionBlock)
     }
+
+    static func answerRequestForPost(post: Post, completionBlock: PFQueryArrayResultBlock) {
+        
+    }
+    
+
 }

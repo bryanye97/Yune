@@ -15,14 +15,15 @@
 		A2B5B9511D2D805A00E97FBE /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B9501D2D805A00E97FBE /* QuestionTableViewCell.swift */; };
 		A2B5B9531D2D811B00E97FBE /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B9521D2D811B00E97FBE /* ParseHelper.swift */; };
 		A2B5B9551D2D81A600E97FBE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B9541D2D81A600E97FBE /* Post.swift */; };
-		A2B5B9571D2D86DA00E97FBE /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B9561D2D86DA00E97FBE /* RecordViewController.swift */; };
-		A2B5B95C1D2DBCB600E97FBE /* AnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B5B95B1D2DBCB600E97FBE /* AnswersViewController.swift */; };
 		A2DE64A51D2EF8EC0075C141 /* AdobeCreativeSDKCoreResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A2DE64A41D2EF8EC0075C141 /* AdobeCreativeSDKCoreResources.bundle */; };
 		A2DE64A71D2EF9180075C141 /* AdobeCreativeSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DE64A61D2EF9180075C141 /* AdobeCreativeSDKCore.framework */; };
 		A2DE64A91D2EF9300075C141 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DE64A81D2EF9300075C141 /* libc++.tbd */; };
 		A2DE64AB1D2EF9380075C141 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DE64AA1D2EF9380075C141 /* libz.tbd */; };
 		A2DE64AD1D2EF9450075C141 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DE64AC1D2EF9450075C141 /* MobileCoreServices.framework */; };
 		A2DE64AF1D2EF94D0075C141 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2DE64AE1D2EF94D0075C141 /* SystemConfiguration.framework */; };
+		A2DE64B21D2EFFCA0075C141 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DE64B11D2EFFCA0075C141 /* PhotoTakingHelper.swift */; };
+		A2DE64B61D2F028B0075C141 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DE64B51D2F028B0075C141 /* Photo.swift */; };
+		A2DE64B81D2F30FB0075C141 /* AnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DE64B71D2F30FB0075C141 /* AnswersViewController.swift */; };
 		EA2C6845F82152DA92B9087A /* Pods_Yune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C90F7E6559C75748F2E0C2A /* Pods_Yune.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,8 +41,6 @@
 		A2B5B9501D2D805A00E97FBE /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		A2B5B9521D2D811B00E97FBE /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		A2B5B9541D2D81A600E97FBE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		A2B5B9561D2D86DA00E97FBE /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
-		A2B5B95B1D2DBCB600E97FBE /* AnswersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswersViewController.swift; sourceTree = "<group>"; };
 		A2DE64A41D2EF8EC0075C141 /* AdobeCreativeSDKCoreResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AdobeCreativeSDKCoreResources.bundle; path = AdobeCreativeSDKFrameworks/AdobeCreativeSDKCore.framework/Versions/A/Resources/AdobeCreativeSDKCoreResources.bundle; sourceTree = "<group>"; };
 		A2DE64A61D2EF9180075C141 /* AdobeCreativeSDKCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdobeCreativeSDKCore.framework; path = AdobeCreativeSDKFrameworks/AdobeCreativeSDKCore.framework; sourceTree = "<group>"; };
 		A2DE64A81D2EF9300075C141 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -49,6 +48,9 @@
 		A2DE64AC1D2EF9450075C141 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A2DE64AE1D2EF94D0075C141 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A2DE64B01D2EF9B20075C141 /* Yune-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yune-Bridging-Header.h"; sourceTree = "<group>"; };
+		A2DE64B11D2EFFCA0075C141 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
+		A2DE64B51D2F028B0075C141 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		A2DE64B71D2F30FB0075C141 /* AnswersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +119,9 @@
 				A21E5DE41D2D7ECF00FE7E77 /* Main.storyboard */,
 				A2B5B9581D2D870200E97FBE /* ViewControllers */,
 				A2B5B9541D2D81A600E97FBE /* Post.swift */,
+				A2DE64B51D2F028B0075C141 /* Photo.swift */,
 				A2B5B9501D2D805A00E97FBE /* QuestionTableViewCell.swift */,
+				A2DE64B11D2EFFCA0075C141 /* PhotoTakingHelper.swift */,
 				A2B5B9521D2D811B00E97FBE /* ParseHelper.swift */,
 				A21E5DE71D2D7ECF00FE7E77 /* Assets.xcassets */,
 				A21E5DE91D2D7ECF00FE7E77 /* LaunchScreen.storyboard */,
@@ -130,8 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				A21E5DF21D2D7F7000FE7E77 /* QuestionViewController.swift */,
-				A2B5B9561D2D86DA00E97FBE /* RecordViewController.swift */,
-				A2B5B95B1D2DBCB600E97FBE /* AnswersViewController.swift */,
+				A2DE64B71D2F30FB0075C141 /* AnswersViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -260,11 +263,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2B5B95C1D2DBCB600E97FBE /* AnswersViewController.swift in Sources */,
+				A2DE64B81D2F30FB0075C141 /* AnswersViewController.swift in Sources */,
+				A2DE64B61D2F028B0075C141 /* Photo.swift in Sources */,
 				A2B5B9511D2D805A00E97FBE /* QuestionTableViewCell.swift in Sources */,
+				A2DE64B21D2EFFCA0075C141 /* PhotoTakingHelper.swift in Sources */,
 				A21E5DF31D2D7F7000FE7E77 /* QuestionViewController.swift in Sources */,
 				A21E5DE11D2D7ECF00FE7E77 /* AppDelegate.swift in Sources */,
-				A2B5B9571D2D86DA00E97FBE /* RecordViewController.swift in Sources */,
 				A2B5B9531D2D811B00E97FBE /* ParseHelper.swift in Sources */,
 				A2B5B9551D2D81A600E97FBE /* Post.swift in Sources */,
 			);
