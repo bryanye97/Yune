@@ -40,6 +40,11 @@ class AnswersViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
+        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.mainScreen().bounds.size.width, height: 20.0))
+        view.backgroundColor = UIColor(red: 0, green: 255/255, blue: 204/255, alpha: 1)
+        self.view.addSubview(view)
+        
         super.viewDidLoad()
         questionLabel.text = post?.title ?? ""
         tableView.dataSource = self
@@ -60,7 +65,6 @@ extension AnswersViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! AnswerTableViewCell
-        cell.backgroundColor = .cyanColor()
         let imageSource = photoSource[indexPath.row]
         cell.photoImageView.image = imageSource.image.value
         return cell

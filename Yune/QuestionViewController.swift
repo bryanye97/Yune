@@ -8,12 +8,18 @@
 
 import UIKit
 import Parse
+import ConvenienceKit
 
-class QuestionViewController: UIViewController {
+class QuestionViewController: UIViewController, TimelineComponentTarget {
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var textField: UITextField!
+    
+    var timelineComponent: TimelineComponent<Post, QuestionViewController>!
+    
+    let defaultRange = 0...4
+    let additionalRangeSize = 5
     
     var answerPost: Post?
     
@@ -24,18 +30,31 @@ class QuestionViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        ParseHelper.timelineRequestForCurrentUser {(result: [PFObject]?, error: NSError?) -> Void in
+        timelineComponent.loadInitialIfRequired()
+        
+    }
+    
+    func loadInRange(range: Range<Int>, completionBlock: ([Post]?) -> Void) {
+    
+        ParseHelper.timelineRequestForCurrentUser(range) { (result: [PFObject]?, error: NSError?) -> Void in
+        
+            let postSource = result as? [Post] ?? []
             
-            self.postSource = result as? [Post] ?? []
-            
-            self.tableView.reloadData()
+            completionBlock(postSource)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.mainScreen().bounds.size.width, height: 20.0))
+        view.backgroundColor = UIColor(red: 0, green: 255/255, blue: 204/255, alpha: 1)
+        self.view.addSubview(view)
+
+        
         AdobeUXAuthManager.sharedManager().setAuthenticationParametersWithClientID("252eb1807af746fda7a9370b760340e8", withClientSecret: "c30fd81e-6e33-4c57-b1bd-bd8d94710366")
+        
+        timelineComponent = TimelineComponent(target: self)
         tableView.dataSource = self
         tableView.delegate = self
         textField.delegate = self
@@ -50,7 +69,7 @@ class QuestionViewController: UIViewController {
         photoTakingHelper = PhotoTakingHelper(viewController: self, callback: { (image: UIImage?) in
             let photo = Photo()
             photo.image = image
-            photo.toPost = self.postSource[indexPath.row]
+            photo.toPost = self.timelineComponent.content[indexPath.row]
             photo.uploadPhoto()
         })
     }
@@ -63,21 +82,27 @@ class QuestionViewController: UIViewController {
             
         }
     }
-    
+
+    @IBAction func takePicture(sender: UIButton) {
+    }
+
     @IBAction func unwindToQuestions(segue: UIStoryboardSegue) {
     }
 }
 
 extension QuestionViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postSource.count ?? 0
+        return timelineComponent.content.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let post = postSource[indexPath.row]
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! QuestionTableViewCell
+        
+        let post = timelineComponent.content[indexPath.row]
+        post.fetchLikes()
+
         cell.title.text = post.title
+        cell.post = post
         
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress(_:)))
         longPressGestureRecognizer.delegate = self
@@ -90,8 +115,13 @@ extension QuestionViewController: UITableViewDataSource {
 
 extension QuestionViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.answerPost = self.postSource[indexPath.row]
+        self.answerPost = self.timelineComponent.content[indexPath.row]
         self.performSegueWithIdentifier("showAnswers", sender: self)
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        timelineComponent.targetWillDisplayEntry(indexPath.row)
     }
 }
 
@@ -112,16 +142,18 @@ extension QuestionViewController: UIGestureRecognizerDelegate {
         if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
             print("gesture worked!")
             
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Would you like to answer this question?", message: nil, preferredStyle: .Alert)
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "No", style: .Cancel, handler: nil)
             alertController.addAction(cancelAction)
             
-            let photoAction = UIAlertAction(title: "Answer Question", style: .Default) { (action) in
+            let photoAction = UIAlertAction(title: "Yes", style: .Default) { (action) in
                 let cell = longPressGestureRecognizer.view as! QuestionTableViewCell
                 self.takePhoto(self.tableView.indexPathForCell(cell)!)
             }
             alertController.addAction(photoAction)
+            
+            alertController.view.tintColor = UIColor(red: 0, green: 179/255, blue: 143/255, alpha: 1)
             
             self.presentViewController(alertController, animated: true, completion: nil)
         }

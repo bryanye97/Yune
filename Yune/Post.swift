@@ -17,6 +17,7 @@ class Post: PFObject, PFSubclassing {
     @NSManaged var title: String?
     @NSManaged var user: PFUser?
     var photos: Observable<[Photo]?> = Observable(nil)
+    var likes: Observable<[PFUser]?> = Observable(nil)
     
     static func parseClassName() -> String {
         return "Post"
@@ -47,4 +48,47 @@ class Post: PFObject, PFSubclassing {
             }
         }
     }
+    
+    func fetchLikes() {
+        if (likes.value != nil) {
+            return
+        }
+        ParseHelper.likesForPost(self, completionBlock: { (likes: [PFObject]?, error: NSError?) -> Void in
+            
+            let validLikes = likes?.filter { like in like[ParseHelper.ParseLikeFromUser] != nil }
+            self.likes.value = validLikes?.map { like in
+                let fromUser = like[ParseHelper.ParseLikeFromUser] as! PFUser
+                
+                return fromUser
+            }
+        })
+    }
+    
+    func doesUserLikePost(user: PFUser) -> Bool {
+        if let likes = likes.value {
+            return likes.contains(user)
+        } else {
+            return false
+        }
+    }
+    
+    func toggleLikePost(user: PFUser) {
+        if (doesUserLikePost(user)) {
+            likes.value = likes.value?.filter { $0 != user }
+            ParseHelper.unlikePost(user, post: self)
+        } else {
+            likes.value?.append(user)
+            ParseHelper.likePost(user, post: self)
+        }
+    }
+    
+    func stringFromUserList(userList: [PFUser]) -> String {
+        
+        let usernameList = userList.map { user in user.username! }
+        
+        let commaSeparatedUserList = usernameList.joinWithSeparator(", ")
+        
+        return commaSeparatedUserList
+    }
+
 }

@@ -27,7 +27,9 @@ class PhotoTakingHelper: NSObject {
     
     func showPhotoSourceSelection() {
         
-        let alertController = UIAlertController(title: nil, message: "Where do you want to get your picture from?", preferredStyle: .ActionSheet)
+        
+        
+        let alertController = UIAlertController(title: nil, message: "Answer with a picture!", preferredStyle: .ActionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
         alertController.addAction(cancelAction)
@@ -45,6 +47,9 @@ class PhotoTakingHelper: NSObject {
             }
             alertController.addAction(cameraAction)
         }
+        
+        alertController.view.tintColor = UIColor(red: 0, green: 179/255, blue: 143/255, alpha: 1)
+
         
         viewController.presentViewController(alertController, animated: true, completion: nil)
     }

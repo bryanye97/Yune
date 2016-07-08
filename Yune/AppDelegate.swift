@@ -14,8 +14,9 @@ import ParseFacebookUtilsV4
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     var window: UIWindow?
+    
     
     var parseLoginHelper: ParseLoginHelper!
     
@@ -35,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        application.statusBarStyle = UIStatusBarStyle.LightContent
         
         let configuration = ParseClientConfiguration {
             $0.applicationId = "Yune"
